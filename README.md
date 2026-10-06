@@ -20,9 +20,11 @@ Defense in depth (RLS, a single allowlist gate, server-side redaction), plus a w
 Orchestrator → builder → chair → owner, with evidence-over-claims gates.
 
 ### 5. Product architecture (reusable patterns, no private data)
+- [AI Corp: the agent company that runs my businesses (truth department, self-healing ladder, approval door)](docs/architecture-ai-corp.md)
+- [OfficeTechMate: AI teams for small businesses (builder, voice agents, multi-tenant portal)](docs/architecture-officetechmate.md)
 - [Armenian Listing: directory + claim funnel + guarded releases](docs/architecture-directory-platform.md)
 - [Patient Catch: AI overflow receptionist](docs/architecture-voice-receptionist.md)
-- [Live ops dashboard (Command Center): sample output](agent-ops/command-center/_cc_site/index.html)
+- [Command Center board: sample output](agent-ops/command-center/_cc_site/index.html)
 
 ## Live products I built and run
 | Product | What it is |
