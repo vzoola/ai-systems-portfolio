@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>⚖️ The AI Constitution</title>
+<!--
+  GENERATED FILE — do not hand-edit. Rebuilt by CROSS_AI_BRAIN/build_constitution.py
+  from the 4 law stones (CLAUDE.md, CRITICAL_RULES.md, GOTCHAS.md, DECISIONS.md).
+  Edit a LAW by editing its stone, then re-run the generator (or build_brain.command).
+  Generated 2026-10-05 22:53 PT.
+-->
+<style>
+  :root{ --bg:#0a1830; --panel:#0e2242; --card:#12294d; --line:#1d3a63; --ink:#eaf2ff; --dim:#8fa3bd; --teal:#3fd0c9; --gold:#f5c542; }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Arial,sans-serif;display:flex;flex-direction:column}
+  .strip{background:var(--panel);border-bottom:1px solid var(--line);padding:10px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .strip .brand{font-weight:800;font-size:16px;letter-spacing:.5px;white-space:nowrap}
+  .strip .brand span{color:var(--teal)}
+  #search{flex:1;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:8px 12px;font-size:13.5px}
+  #search::placeholder{color:var(--dim)}
+  .legend{background:var(--panel);border-bottom:1px solid var(--line);padding:8px 18px;display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--dim)}
+  .legend .chip{display:inline-flex;align-items:center;gap:6px;background:var(--card);border-radius:999px;padding:3px 10px}
+  .legend .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .body{flex:1;display:flex;min-height:0}
+  .side{width:220px;flex:none;background:var(--panel);border-right:1px solid var(--line);padding:12px 8px 40px;display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+  .ni{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:10px;font-size:14px;cursor:pointer;color:var(--ink)}
+  .ni:hover{background:var(--card)}
+  .ni.on{background:var(--card);border:1px solid var(--teal)}
+  .ni .cnt{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 8px;background:#1d3a63;color:var(--dim)}
+  .pane{flex:1;min-width:0;overflow-y:auto;padding:10px 0 60px}
+  .row{display:flex;align-items:flex-start;gap:12px;padding:11px 20px;border-bottom:1px solid var(--line);cursor:pointer}
+  .row:hover{background:var(--card)}
+  .row .idchip{flex:none;font-size:11.5px;font-weight:800;border-radius:8px;padding:3px 8px;color:#0a1830;white-space:nowrap;margin-top:2px}
+  .row .rtitle{flex:1;font-size:14px;line-height:1.4}
+  .row .rdate{flex:none;font-size:12px;color:var(--dim);white-space:nowrap;margin-top:2px}
+  .expand{display:none;padding:4px 20px 20px 20px;background:#0c1e3c;border-bottom:1px solid var(--line);white-space:pre-wrap;font-size:13.5px;line-height:1.6;color:var(--ink)}
+  .expand .src{margin-top:14px;font-size:12px;color:var(--dim);border-top:1px solid var(--line);padding-top:10px}
+  .row.open + .expand{display:block}
+  .empty{padding:40px;color:var(--dim);text-align:center}
+  .side .sep{margin:10px 10px 4px;font-size:10.5px;letter-spacing:1.5px;color:#5f7292;text-transform:uppercase}
+  .lintchip{display:inline-block;margin-left:8px;font-size:10.5px;font-weight:700;border-radius:999px;padding:1px 8px;white-space:nowrap;vertical-align:middle}
+  .lintchip-contradiction{background:#3d1414;color:#ff9b9b}
+  .lintchip-shadowed{background:#3a2e0a;color:#f5c542}
+  .lintchip-never_cited{background:#241a3a;color:#c9b6ff}
+  .lintdetail{margin-top:12px;padding:10px 12px;border-radius:8px;font-size:12.5px;line-height:1.5;white-space:normal}
+  .lintdetail-contradiction{background:#2a1010;border:1px solid #4a1e1e;color:#ffb3b3}
+  .lintdetail-shadowed{background:#2a2007;border:1px solid #4a3a10;color:#f5c542}
+  .lintdetail-never_cited{background:#180f2a;border:1px solid #2e1e4a;color:#c9b6ff}
+  @media(max-width:760px){ .side{width:64px} .ni span.lbl{display:none} .ni{justify-content:center} .ni .cnt{display:none} }
+</style>
+</head>
+<body>
+  <div class="strip">
+    <div class="brand">⚖️ THE AI <span>CONSTITUTION</span></div>
+    <input id="search" type="text" placeholder="Search every law, rule, gotcha, decision…">
+    <div style="font-size:12px;color:var(--dim)">generated 2026-10-05 22:53 PT &nbsp;·&nbsp; lint 2026-10-05 22:53 PT</div>
+  </div>
+  <div class="legend">
+    <span class="chip"><span class="dot" style="background:#3fd0c9"></span>L = Core laws (CLAUDE.md, auto-loads every session)</span>
+    <span class="chip"><span class="dot" style="background:#ff6b6b"></span>C = Critical rules (hard operating rules)</span>
+    <span class="chip"><span class="dot" style="background:#f5c542"></span>G = Gotchas (traps we paid for, now law)</span>
+    <span class="chip"><span class="dot" style="background:#8f7bff"></span>D = Decisions (Vahe's rulings, by project)</span>
+  </div>
+  <div class="body">
+    <div class="side" id="side"></div>
+    <div class="pane" id="pane"></div>
+  </div>
+
+<script>
+var ARTICLES = [{"id": "L-1", "series": "L", "title": "1. READ → CLAIM → DO → LOG → SYNC (2026-06-20)", "date": "2026-06-20", "first_seen": "2026-10-05", "body": "Every session, every agent: read `NOW.md` first, claim the item (`[in progress · <agent>]`), do it, log ONE dated, agent-tagged line to `brain/CONVO_LOG.md`, then sync `NOW.md` and rebuild the one-paste brief. A fact lives in exactly one place: open work → NOW.md; finished work → CONVO_LOG; durable truth → the stones.", "source": "CLAUDE.md (auto-loads every session) §1. READ → CLAIM → DO → LOG → SYNC (2026-06-20)", "lint": []}, {"id": "L-2", "series": "L", "title": "2. The human runs money, deploys and sends (2026-06-20)", "date": "2026-06-20", "first_seen": "2026-10-05", "body": "Anything that spends money, writes to production infrastructure, or sends a message to a real person is prepared by an agent and executed by the human. Everything else, agents do themselves — never hand the human a step an agent could do.", "source": "CLAUDE.md (auto-loads every session) §2. The human runs money, deploys and sends (2026-06-20)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"human runs money deploys sends\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-06-20. A rule nobody cites is a decoration."}]}, {"id": "L-3", "series": "L", "title": "3. Ship only on an adversarial ACCEPT (2026-09-28)", "date": "2026-09-28", "first_seen": "2026-10-05", "body": "Customer-facing features that touch private data ship only after an independent reviewer model (\"the chair\") returns ACCEPT: no Blocker and no Should-fix. The chair is told: do not soften a finding to end the loop, do not invent one to extend it.", "source": "CLAUDE.md (auto-loads every session) §3. Ship only on an adversarial ACCEPT (2026-09-28)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"ship only adversarial accept\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-09-28. A rule nobody cites is a decoration."}]}, {"id": "L-4", "series": "L", "title": "4. Never print secrets (2026-07-11)", "date": "2026-07-11", "first_seen": "2026-10-05", "body": "No key, token or password is ever echoed into a chat, log, or test assertion. Secrets live in the OS keychain or `.env` files outside the repo.", "source": "CLAUDE.md (auto-loads every session) §4. Never print secrets (2026-07-11)", "lint": []}, {"id": "G-1", "series": "G", "title": "A test that greps SOURCE TEXT is satisfied by its own comment (2026-07-13)", "date": "2026-07-13", "first_seen": "2026-10-05", "body": "Trap: a \"the guard exists\" test grepped the source for the guard's name — and passed because a comment mentioned it. Fix: test behavior (trip the guard), never text; confirm with a mutant that deletes the guard.", "source": "GOTCHAS.md (traps we paid for, now law) §A test that greps SOURCE TEXT is satisfied by its own comment (2026-07-13)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"test that greps source text satisfied comment\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-13. A rule nobody cites is a decoration."}]}, {"id": "G-2", "series": "G", "title": "A failing assertion PUBLISHES its operands (2026-07-14)", "date": "2026-07-14", "first_seen": "2026-10-05", "body": "Trap: the test proving secrets don't leak printed the secret in its own failure message. Fix: assert on hashes/lengths, never on raw secret values.", "source": "GOTCHAS.md (traps we paid for, now law) §A failing assertion PUBLISHES its operands (2026-07-14)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"failing assertion publishes operands\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-14. A rule nobody cites is a decoration."}]}, {"id": "G-3", "series": "G", "title": "A permission ledger's cursor must be a LINE COUNT, never a timestamp (2026-07-13)", "date": "2026-07-13", "first_seen": "2026-10-05", "body": "Trap: two approvals in the same second; the timestamp cursor skipped one. Fix: cursor = number of lines consumed in the append-only log.", "source": "GOTCHAS.md (traps we paid for, now law) §A permission ledger's cursor must be a LINE COUNT, never a timestamp (2026-07-13)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"permission ledger cursor must line count never timestamp\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-13. A rule nobody cites is a decoration."}]}, {"id": "G-4", "series": "G", "title": "Threshold alerts lie about WHEN (2026-07-16)", "date": "2026-07-16", "first_seen": "2026-10-05", "body": "Trap: a \"money fire\" alert fired three days after the real event because it compared against a stale aggregate. Fix: alerts carry the event's own timestamp, and relays never guess WHY.", "source": "GOTCHAS.md (traps we paid for, now law) §Threshold alerts lie about WHEN (2026-07-16)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"threshold alerts about when\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-16. A rule nobody cites is a decoration."}]}, {"id": "G-5", "series": "G", "title": "Correlated verifiers = fake consensus (2026-07-07)", "date": "2026-07-07", "first_seen": "2026-10-05", "body": "Trap: five copies of the same model \"agreeing\" is one opinion. Fix: the reviewer must differ in vendor, context, or method (static review + executed repro + mutation run).", "source": "GOTCHAS.md (traps we paid for, now law) §Correlated verifiers = fake consensus (2026-07-07)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"correlated verifiers fake consensus\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-07. A rule nobody cites is a decoration."}]}, {"id": "G-6", "series": "G", "title": "Shell clock is UTC (2026-10-05)", "date": "2026-10-05", "first_seen": "2026-10-05", "body": "Trap: an orchestrator read a UTC shell clock as local time and gave the human an 8-hour ETA for a 1-hour job. Fix: always `TZ=<local> date` before stating a time to a human.", "source": "GOTCHAS.md (traps we paid for, now law) §Shell clock is UTC (2026-10-05)", "lint": []}, {"id": "D-1", "series": "D", "title": "Family Tree — privacy model — The whole tree is private to invited members, deceased included; an invite link is the only way in.", "date": "2026-10-04", "first_seen": "2026-10-05", "body": "**Family Tree — privacy model**\n\nThe whole tree is private to invited members, deceased included; an invite link is the only way in.\n\n**Word-cite / source:** Owner, in chat", "source": "DECISIONS.md (Vahe's rulings, by project) §Family Tree — privacy model", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"privacy model whole tree private invited members deceased\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-10-04. A rule nobody cites is a decoration."}]}, {"id": "D-2", "series": "D", "title": "Family Tree — privacy model — Any outside visibility must be a per-tree owner opt-in, off by default.", "date": "2026-10-04", "first_seen": "2026-10-05", "body": "**Family Tree — privacy model**\n\nAny outside visibility must be a per-tree owner opt-in, off by default.\n\n**Word-cite / source:** Owner, in chat", "source": "DECISIONS.md (Vahe's rulings, by project) §Family Tree — privacy model", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"privacy model outside visibility must per-tree owner opt-in\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-10-04. A rule nobody cites is a decoration."}]}, {"id": "D-3", "series": "D", "title": "Family Tree — privacy model — A hidden birth year also hides that person's birth order, and a sibling group's numbers are withheld when a...", "date": "2026-10-05", "first_seen": "2026-10-05", "body": "**Family Tree — privacy model**\n\nA hidden birth year also hides that person's birth order, and a sibling group's numbers are withheld when any sibling is hidden from the viewer.\n\n**Word-cite / source:** Owner (privacy-first) + chair finding NEW-13", "source": "DECISIONS.md (Vahe's rulings, by project) §Family Tree — privacy model", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"privacy model hidden birth year also hides that\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-10-05. A rule nobody cites is a decoration."}]}, {"id": "D-4", "series": "D", "title": "Memory system — Currency is decided by EVENT time, never by mention time.", "date": "2026-07-04", "first_seen": "2026-10-05", "body": "**Memory system**\n\nCurrency is decided by EVENT time, never by mention time.\n\n**Word-cite / source:** Design review", "source": "DECISIONS.md (Vahe's rulings, by project) §Memory system", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"currency decided event time never mention time\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-04. A rule nobody cites is a decoration."}]}, {"id": "D-5", "series": "D", "title": "Memory system — Disagreeing undated mentions serve NO value and disclose all of them.", "date": "2026-07-14", "first_seen": "2026-10-05", "body": "**Memory system**\n\nDisagreeing undated mentions serve NO value and disclose all of them.\n\n**Word-cite / source:** Owner blessed \"Option 3\"", "source": "DECISIONS.md (Vahe's rulings, by project) §Memory system", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"disagreeing undated mentions serve value disclose them\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-14. A rule nobody cites is a decoration."}]}, {"id": "C-1", "series": "C", "title": "1. VERIFY, ALWAYS — never say \"done\" without proof (2026-06-13)", "date": "2026-06-13", "first_seen": "2026-10-05", "body": "\"Done\" means evidence: a command's exit code, a file's real contents, a live URL's response. An agent's own summary of its work is a claim, not evidence — the orchestrator re-reads the disk before reporting.", "source": "CRITICAL_RULES.md (hard operating rules) §1. VERIFY, ALWAYS — never say \"done\" without proof (2026-06-13)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"never done without proof\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-06-13. A rule nobody cites is a decoration."}]}, {"id": "C-2", "series": "C", "title": "2. TEST ONE BEFORE ANY BATCH (2026-06-14)", "date": "2026-06-14", "first_seen": "2026-10-05", "body": "Anything that costs money or touches many records runs on ONE item first, is verified, and only then runs on the batch.", "source": "CRITICAL_RULES.md (hard operating rules) §2. TEST ONE BEFORE ANY BATCH (2026-06-14)", "lint": []}, {"id": "C-3", "series": "C", "title": "3. PROVE-THE-GATE — every guard ships with a proof-of-fire (2026-07-14)", "date": "2026-07-14", "first_seen": "2026-10-05", "body": "A safety check that has never been seen to fire is a decoration. Every new guard ships with a test that trips it on purpose, and mutation testing confirms that deleting the guard makes a test fail.", "source": "CRITICAL_RULES.md (hard operating rules) §3. PROVE-THE-GATE — every guard ships with a proof-of-fire (2026-07-14)", "lint": [{"type": "never_cited", "label": "👻 unexercised", "detail": "No other citation found for this rule's distinctive phrase (\"every guard ships with proof-of-fire\") in CONVO_LOG, GOTCHAS, or any KICKOFF_*.md. Embedded date: 2026-07-14. A rule nobody cites is a decoration."}]}, {"id": "C-4", "series": "C", "title": "4. FOUR-STATE ACCOUNTING (2026-07-14)", "date": "2026-07-14", "first_seen": "2026-10-05", "body": "Every task is exactly one of: DONE (with evidence), BLOCKED (with the named blocker), HANDED OFF (with the recipient), or DROPPED (with the reason). \"Mostly done\" is not a state.", "source": "CRITICAL_RULES.md (hard operating rules) §4. FOUR-STATE ACCOUNTING (2026-07-14)", "lint": []}, {"id": "C-5", "series": "C", "title": "5. STOP ON AMBIGUITY (2026-07-16)", "date": "2026-07-16", "first_seen": "2026-10-05", "body": "When two rules conflict, or a request has two readings with different consequences, the agent stops and asks. It never silently picks the reading that lets it keep moving.", "source": "CRITICAL_RULES.md (hard operating rules) §5. STOP ON AMBIGUITY (2026-07-16)", "lint": []}];
+var SERIES_COLOR = {"L": "#3fd0c9", "C": "#ff6b6b", "G": "#f5c542", "D": "#8f7bff"};
+var SERIES_LABEL = {"L": "Core laws", "C": "Critical rules", "G": "Gotchas", "D": "Decisions"};
+var currentFolder = 'all';
+
+function isNewThisWeek(a) {
+  var d = new Date(a.first_seen + 'T00:00:00');
+  var cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 7);
+  return d >= cutoff;
+}
+
+function counts() {
+  var c = { new: 0, L: 0, C: 0, G: 0, D: 0, lint: 0, all: ARTICLES.length };
+  ARTICLES.forEach(function(a) {
+    c[a.series] = (c[a.series] || 0) + 1;
+    if (isNewThisWeek(a)) c.new++;
+    if (a.lint && a.lint.length) c.lint++;
+  });
+  return c;
+}
+
+function buildSide() {
+  var c = counts();
+  var folders = [
+    {key:'new', label:'⭐ New this week', cnt:c.new},
+    {key:'lint', label:'⚠️ Lint', cnt:c.lint},
+    {sep:'By series'},
+    {key:'L', label:'L — Core laws', cnt:c.L},
+    {key:'C', label:'C — Critical rules', cnt:c.C},
+    {key:'G', label:'G — Gotchas', cnt:c.G},
+    {key:'D', label:'D — Decisions', cnt:c.D},
+    {sep:''},
+    {key:'all', label:'All laws', cnt:c.all}
+  ];
+  var el = document.getElementById('side'), html = '';
+  folders.forEach(function(f) {
+    if (f.sep !== undefined) { if (f.sep) html += '<div class="sep">' + f.sep + '</div>'; return; }
+    html += '<div class="ni' + (currentFolder === f.key ? ' on' : '') + '" data-folder="' + f.key + '">'
+      + '<span class="lbl">' + f.label + '</span><span class="cnt">' + f.cnt + '</span></div>';
+  });
+  el.innerHTML = html;
+  el.querySelectorAll('.ni[data-folder]').forEach(function(ni) {
+    ni.addEventListener('click', function() { currentFolder = ni.getAttribute('data-folder'); render(); });
+  });
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function render() {
+  buildSide();
+  var q = (document.getElementById('search').value || '').toLowerCase().trim();
+  var list = ARTICLES.filter(function(a) {
+    if (currentFolder === 'new' && !isNewThisWeek(a)) return false;
+    if (currentFolder === 'lint' && !(a.lint && a.lint.length)) return false;
+    if (['L','C','G','D'].indexOf(currentFolder) !== -1 && a.series !== currentFolder) return false;
+    if (q && (a.title + ' ' + a.body).toLowerCase().indexOf(q) === -1) return false;
+    return true;
+  });
+  var pane = document.getElementById('pane');
+  if (!list.length) { pane.innerHTML = '<div class="empty">No laws match.</div>'; return; }
+  var html = '';
+  list.forEach(function(a, i) {
+    var color = SERIES_COLOR[a.series] || '#888';
+    var lintChips = (a.lint || []).map(function(l) {
+      return '<span class="lintchip lintchip-' + l.type + '">' + esc(l.label) + '</span>';
+    }).join('');
+    html += '<div class="row" data-i="' + i + '">'
+      + '<span class="idchip" style="background:' + color + '">' + esc(a.id) + '</span>'
+      + '<span class="rtitle">' + esc(a.title) + lintChips + '</span>'
+      + '<span class="rdate">' + esc(a.date || a.first_seen) + '</span>'
+      + '</div>'
+      + '<div class="expand"></div>';
+  });
+  pane.innerHTML = html;
+  pane.querySelectorAll('.row').forEach(function(row) {
+    row.addEventListener('click', function() {
+      var i = parseInt(row.getAttribute('data-i'), 10);
+      var a = list[i];
+      var already = row.classList.contains('open');
+      pane.querySelectorAll('.row.open').forEach(function(r) { r.classList.remove('open'); });
+      if (!already) {
+        row.classList.add('open');
+        var exp = row.nextElementSibling;
+        var lintHtml = (a.lint || []).map(function(l) {
+          return '<div class="lintdetail lintdetail-' + l.type + '">' + esc(l.label) + ' — ' + esc(l.detail) + '</div>';
+        }).join('');
+        exp.innerHTML = esc(a.body) + lintHtml + '<div class="src">Source: ' + esc(a.source)
+          + (a.date ? ' · carved ' + esc(a.date) : ' · date not stated in source') + '</div>';
+      }
+    });
+  });
+}
+
+document.getElementById('search').addEventListener('input', render);
+render();
+</script>
+</body>
+</html>
