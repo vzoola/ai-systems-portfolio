@@ -1,0 +1,345 @@
+{
+ "$schema_note": "SAMPLE registry (10 of the 78 keys in the private production registry). The registry holds key MEANING (definition, anchors, value type, stakes, perishability) — never values; values live in the bitemporal fact store.",
+ "generated_at": "2026-07-07",
+ "keys": [
+  {
+   "key": "credit_balance",
+   "domain": "vapi",
+   "value_type": "money",
+   "stakes": "high",
+   "perishable_days": 14,
+   "guarded": false,
+   "definition": "The prepaid balance, in USD, of the shared OTM Vapi voice-AI wallet.",
+   "scope_excludes": [
+    "not per-client sub-accounts"
+   ],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "vapi",
+    "credit balance",
+    "balance",
+    "prepaid"
+   ],
+   "exclusion_terms": [],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "drifting",
+   "tolerance": {
+    "amount": 5,
+    "unit": "usd",
+    "note": "no explicit band in source sheet; documented default (drifts with usage)"
+   },
+   "as_of": "2026-07-05"
+  },
+  {
+   "key": "starter_price",
+   "domain": "otm",
+   "value_type": "money",
+   "stakes": "high",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "OTM's base monthly price for the receptionist-only package.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "otm",
+    "starter price",
+    "297",
+    "receptionist",
+    "officetechmate"
+   ],
+   "exclusion_terms": [
+    "patient catch",
+    "patient_catch",
+    "patientcatch"
+   ],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "full_team_price",
+   "domain": "otm",
+   "value_type": "money",
+   "stakes": "high",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "OTM's Home & Trade full-team package price, which is priced per-industry (not a flat rate); Home & Trade's is $997/mo.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "otm",
+    "full team price",
+    "997",
+    "home and trade",
+    "officetechmate"
+   ],
+   "exclusion_terms": [
+    "patient catch",
+    "patient_catch",
+    "patientcatch"
+   ],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "pricing_model",
+   "domain": "otm",
+   "value_type": "string",
+   "stakes": "high",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "How OTM's pricing scales: a $297 receptionist-only base scaling by industry, call-volume tier, and add-ons, via the /ai-front-desk-builder calculator. This is the AI FRONT DESK (SKU #1) base only.",
+   "scope_excludes": [
+    "not the AI Marketing Department's $497/mo base (SKU #2) -- that is otm/marketing_dept_pricing",
+    "in a bundle sentence naming both products, the $297 figure is THIS key and the $497 figure is NOT",
+    "not Patient Catch's $397-$497 Overflow tier -- a different product that shares the 497 digits"
+   ],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "otm",
+    "pricing model",
+    "297",
+    "calculator",
+    "ai-front-desk-builder",
+    "officetechmate"
+   ],
+   "exclusion_terms": [
+    "patient catch",
+    "patient_catch",
+    "patientcatch",
+    "nearbyla",
+    "armenian listing",
+    "marketing department",
+    "marketing dept",
+    "mark-in-a-box",
+    "sku #2",
+    "497"
+   ],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "language_support",
+   "domain": "patientcatch",
+   "value_type": "string",
+   "stakes": "high",
+   "perishable_days": null,
+   "guarded": true,
+   "definition": "Patient Catch's fixed language-count marketing claim: FOUR named languages (English, Armenian, Russian, Spanish), never to be crossed with OTM's '60+' claim.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "patient catch",
+    "four languages",
+    "language support"
+   ],
+   "exclusion_terms": [
+    "otm",
+    "60+ languages",
+    "60 languages"
+   ],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "businesses_count",
+   "domain": "al",
+   "value_type": "number",
+   "stakes": "normal",
+   "perishable_days": 14,
+   "guarded": false,
+   "definition": "The number of businesses in the Armenian Listing catalog, which drifts daily via the seeder.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "al",
+    "armenian listing",
+    "businesses count",
+    "catalog"
+   ],
+   "exclusion_terms": [],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "drifting",
+   "tolerance": {
+    "amount": 50,
+    "unit": "count",
+    "note": "no explicit band in source sheet; documented default given 5-10/day seeding rate and PAUSED status"
+   },
+   "as_of": "2026-07-07"
+  },
+  {
+   "key": "domain",
+   "domain": "al",
+   "value_type": "string",
+   "stakes": "low",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "Armenian Listing's domain name.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "al",
+    "domain",
+    "armenianlisting.com"
+   ],
+   "exclusion_terms": [],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "membership_verified",
+   "domain": "al",
+   "value_type": "money",
+   "stakes": "high",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "AL's verified membership tier monthly/yearly price.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "al",
+    "membership verified",
+    "9.90"
+   ],
+   "exclusion_terms": [],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "membership_featured",
+   "domain": "al",
+   "value_type": "money",
+   "stakes": "high",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "AL's featured membership tier monthly/yearly price.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "al",
+    "membership featured",
+    "49"
+   ],
+   "exclusion_terms": [],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  },
+  {
+   "key": "gig_prices",
+   "domain": "nearbyla",
+   "value_type": "money",
+   "stakes": "normal",
+   "perishable_days": null,
+   "guarded": false,
+   "definition": "NearbyLA's one-time gig posting prices.",
+   "scope_excludes": [],
+   "source_types": [
+    "convo_log",
+    "now_md"
+   ],
+   "anchor_terms": [
+    "nearbyla",
+    "gig prices"
+   ],
+   "exclusion_terms": [],
+   "aliases": [],
+   "status": "active",
+   "created_at": "2026-07-04",
+   "deprecated_at": null,
+   "superseded_by": [],
+   "deprecation_reason": null,
+   "grade_class": "golden",
+   "tolerance": null,
+   "as_of": null
+  }
+ ],
+ "counts": {
+  "drifting": 2,
+  "golden": 8
+ }
+}
