@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-10-05 22:53 PT",
+  "counts": {
+    "contradictions": 0,
+    "shadowed": 0,
+    "never_cited": 14
+  },
+  "contradictions": [],
+  "shadowed": [],
+  "never_cited": [
+    {
+      "id": "L-2",
+      "title": "2. The human runs money, deploys and sends (2026-06-20)",
+      "source": "CLAUDE.md (auto-loads every session) \u00a72. The human runs money, deploys and sends (2026-06-20)",
+      "embedded_date": "2026-06-20",
+      "checked_phrase": "human runs money deploys sends"
+    },
+    {
+      "id": "L-3",
+      "title": "3. Ship only on an adversarial ACCEPT (2026-09-28)",
+      "source": "CLAUDE.md (auto-loads every session) \u00a73. Ship only on an adversarial ACCEPT (2026-09-28)",
+      "embedded_date": "2026-09-28",
+      "checked_phrase": "ship only adversarial accept"
+    },
+    {
+      "id": "C-1",
+      "title": "1. VERIFY, ALWAYS \u2014 never say \"done\" without proof (2026-06-13)",
+      "source": "CRITICAL_RULES.md (hard operating rules) \u00a71. VERIFY, ALWAYS \u2014 never say \"done\" without proof (2026-06-13)",
+      "embedded_date": "2026-06-13",
+      "checked_phrase": "never done without proof"
+    },
+    {
+      "id": "C-3",
+      "title": "3. PROVE-THE-GATE \u2014 every guard ships with a proof-of-fire (2026-07-14)",
+      "source": "CRITICAL_RULES.md (hard operating rules) \u00a73. PROVE-THE-GATE \u2014 every guard ships with a proof-of-fire (2026-07-14)",
+      "embedded_date": "2026-07-14",
+      "checked_phrase": "every guard ships with proof-of-fire"
+    },
+    {
+      "id": "G-1",
+      "title": "A test that greps SOURCE TEXT is satisfied by its own comment (2026-07-13)",
+      "source": "GOTCHAS.md (traps we paid for, now law) \u00a7A test that greps SOURCE TEXT is satisfied by its own comment (2026-07-13)",
+      "embedded_date": "2026-07-13",
+      "checked_phrase": "test that greps source text satisfied comment"
+    },
+    {
+      "id": "G-2",
+      "title": "A failing assertion PUBLISHES its operands (2026-07-14)",
+      "source": "GOTCHAS.md (traps we paid for, now law) \u00a7A failing assertion PUBLISHES its operands (2026-07-14)",
+      "embedded_date": "2026-07-14",
+      "checked_phrase": "failing assertion publishes operands"
+    },
+    {
+      "id": "G-3",
+      "title": "A permission ledger's cursor must be a LINE COUNT, never a timestamp (2026-07-13)",
+      "source": "GOTCHAS.md (traps we paid for, now law) \u00a7A permission ledger's cursor must be a LINE COUNT, never a timestamp (2026-07-13)",
+      "embedded_date": "2026-07-13",
+      "checked_phrase": "permission ledger cursor must line count never timestamp"
+    },
+    {
+      "id": "G-4",
+      "title": "Threshold alerts lie about WHEN (2026-07-16)",
+      "source": "GOTCHAS.md (traps we paid for, now law) \u00a7Threshold alerts lie about WHEN (2026-07-16)",
+      "embedded_date": "2026-07-16",
+      "checked_phrase": "threshold alerts about when"
+    },
+    {
+      "id": "G-5",
+      "title": "Correlated verifiers = fake consensus (2026-07-07)",
+      "source": "GOTCHAS.md (traps we paid for, now law) \u00a7Correlated verifiers = fake consensus (2026-07-07)",
+      "embedded_date": "2026-07-07",
+      "checked_phrase": "correlated verifiers fake consensus"
+    },
+    {
+      "id": "D-1",
+      "title": "Family Tree \u2014 privacy model \u2014 The whole tree is private to invited members, deceased included; an invite link is the only way in.",
+      "source": "DECISIONS.md (Vahe's rulings, by project) \u00a7Family Tree \u2014 privacy model",
+      "embedded_date": "2026-10-04",
+      "checked_phrase": "privacy model whole tree private invited members deceased"
+    },
+    {
+      "id": "D-2",
+      "title": "Family Tree \u2014 privacy model \u2014 Any outside visibility must be a per-tree owner opt-in, off by default.",
+      "source": "DECISIONS.md (Vahe's rulings, by project) \u00a7Family Tree \u2014 privacy model",
+      "embedded_date": "2026-10-04",
+      "checked_phrase": "privacy model outside visibility must per-tree owner opt-in"
+    },
+    {
+      "id": "D-3",
+      "title": "Family Tree \u2014 privacy model \u2014 A hidden birth year also hides that person's birth order, and a sibling group's numbers are withheld when a...",
+      "source": "DECISIONS.md (Vahe's rulings, by project) \u00a7Family Tree \u2014 privacy model",
+      "embedded_date": "2026-10-05",
+      "checked_phrase": "privacy model hidden birth year also hides that"
+    },
+    {
+      "id": "D-4",
+      "title": "Memory system \u2014 Currency is decided by EVENT time, never by mention time.",
+      "source": "DECISIONS.md (Vahe's rulings, by project) \u00a7Memory system",
+      "embedded_date": "2026-07-04",
+      "checked_phrase": "currency decided event time never mention time"
+    },
+    {
+      "id": "D-5",
+      "title": "Memory system \u2014 Disagreeing undated mentions serve NO value and disclose all of them.",
+      "source": "DECISIONS.md (Vahe's rulings, by project) \u00a7Memory system",
+      "embedded_date": "2026-07-14",
+      "checked_phrase": "disagreeing undated mentions serve value disclose them"
+    }
+  ]
+}

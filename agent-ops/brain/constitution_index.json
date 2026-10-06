@@ -1,0 +1,182 @@
+{
+  "04db2ebc1035de0d": {
+    "first_seen": "2026-10-05",
+    "id": "D-5",
+    "n": 5,
+    "owner": null,
+    "scope": "Memory system",
+    "series": "D",
+    "title": "Memory system \u2014 Disagreeing undated mentions serve NO value and disclose all of them."
+  },
+  "13bcb3dbaf9a2669": {
+    "first_seen": "2026-10-05",
+    "id": "G-2",
+    "n": 2,
+    "owner": null,
+    "scope": "Gotchas",
+    "series": "G",
+    "title": "A failing assertion PUBLISHES its operands (2026-07-14)"
+  },
+  "4690b0d0968e2632": {
+    "first_seen": "2026-10-05",
+    "id": "C-1",
+    "n": 1,
+    "owner": null,
+    "scope": "Critical rules",
+    "series": "C",
+    "title": "1. VERIFY, ALWAYS \u2014 never say \"done\" without proof (2026-06-13)"
+  },
+  "490ea3f13809d17c": {
+    "first_seen": "2026-10-05",
+    "id": "L-1",
+    "n": 1,
+    "owner": null,
+    "scope": "Core laws",
+    "series": "L",
+    "title": "1. READ \u2192 CLAIM \u2192 DO \u2192 LOG \u2192 SYNC (2026-06-20)"
+  },
+  "69a948f0356909af": {
+    "first_seen": "2026-10-05",
+    "id": "L-2",
+    "n": 2,
+    "owner": null,
+    "scope": "Core laws",
+    "series": "L",
+    "title": "2. The human runs money, deploys and sends (2026-06-20)"
+  },
+  "6eb9b4d5402bc5d7": {
+    "first_seen": "2026-10-05",
+    "id": "G-1",
+    "n": 1,
+    "owner": null,
+    "scope": "Gotchas",
+    "series": "G",
+    "title": "A test that greps SOURCE TEXT is satisfied by its own comment (2026-07-13)"
+  },
+  "6f362b22c4210e75": {
+    "first_seen": "2026-10-05",
+    "id": "D-2",
+    "n": 2,
+    "owner": null,
+    "scope": "Family Tree",
+    "series": "D",
+    "title": "Family Tree \u2014 privacy model \u2014 Any outside visibility must be a per-tree owner opt-in, off by default."
+  },
+  "7109126a1fc6c345": {
+    "first_seen": "2026-10-05",
+    "id": "G-5",
+    "n": 5,
+    "owner": null,
+    "scope": "Gotchas",
+    "series": "G",
+    "title": "Correlated verifiers = fake consensus (2026-07-07)"
+  },
+  "728e302e46d39de6": {
+    "first_seen": "2026-10-05",
+    "id": "D-3",
+    "n": 3,
+    "owner": null,
+    "scope": "Family Tree",
+    "series": "D",
+    "title": "Family Tree \u2014 privacy model \u2014 A hidden birth year also hides that person's birth order, and a sibling group's numbers are withheld when a..."
+  },
+  "741f7afc91f69620": {
+    "first_seen": "2026-10-05",
+    "id": "C-2",
+    "n": 2,
+    "owner": null,
+    "scope": "Critical rules",
+    "series": "C",
+    "title": "2. TEST ONE BEFORE ANY BATCH (2026-06-14)"
+  },
+  "84b2c28524c91359": {
+    "first_seen": "2026-10-05",
+    "id": "D-1",
+    "n": 1,
+    "owner": null,
+    "scope": "Family Tree",
+    "series": "D",
+    "title": "Family Tree \u2014 privacy model \u2014 The whole tree is private to invited members, deceased included; an invite link is the only way in."
+  },
+  "ad6263cf1a6c752e": {
+    "first_seen": "2026-10-05",
+    "id": "G-4",
+    "n": 4,
+    "owner": null,
+    "scope": "Gotchas",
+    "series": "G",
+    "title": "Threshold alerts lie about WHEN (2026-07-16)"
+  },
+  "b0b79b5f6859da11": {
+    "first_seen": "2026-10-05",
+    "id": "C-4",
+    "n": 4,
+    "owner": null,
+    "scope": "Critical rules",
+    "series": "C",
+    "title": "4. FOUR-STATE ACCOUNTING (2026-07-14)"
+  },
+  "b4c948f626aacae8": {
+    "first_seen": "2026-10-05",
+    "id": "C-5",
+    "n": 5,
+    "owner": null,
+    "scope": "Critical rules",
+    "series": "C",
+    "title": "5. STOP ON AMBIGUITY (2026-07-16)"
+  },
+  "bf56ae818119bfdf": {
+    "first_seen": "2026-10-05",
+    "id": "G-3",
+    "n": 3,
+    "owner": null,
+    "scope": "Gotchas",
+    "series": "G",
+    "title": "A permission ledger's cursor must be a LINE COUNT, never a timestamp (2026-07-13)"
+  },
+  "cdab6a27e776bd8a": {
+    "first_seen": "2026-10-05",
+    "id": "G-6",
+    "n": 6,
+    "owner": null,
+    "scope": "Gotchas",
+    "series": "G",
+    "title": "Shell clock is UTC (2026-10-05)"
+  },
+  "d0f8743fcad35558": {
+    "first_seen": "2026-10-05",
+    "id": "C-3",
+    "n": 3,
+    "owner": null,
+    "scope": "Critical rules",
+    "series": "C",
+    "title": "3. PROVE-THE-GATE \u2014 every guard ships with a proof-of-fire (2026-07-14)"
+  },
+  "d4aee5a5a9a1d0de": {
+    "first_seen": "2026-10-05",
+    "id": "D-4",
+    "n": 4,
+    "owner": null,
+    "scope": "Memory system",
+    "series": "D",
+    "title": "Memory system \u2014 Currency is decided by EVENT time, never by mention time."
+  },
+  "dfe6b68d395c27e8": {
+    "first_seen": "2026-10-05",
+    "id": "L-4",
+    "n": 4,
+    "owner": null,
+    "scope": "Core laws",
+    "series": "L",
+    "title": "4. Never print secrets (2026-07-11)"
+  },
+  "e073210c4653d265": {
+    "first_seen": "2026-10-05",
+    "id": "L-3",
+    "n": 3,
+    "owner": null,
+    "scope": "Core laws",
+    "series": "L",
+    "title": "3. Ship only on an adversarial ACCEPT (2026-09-28)"
+  }
+}
