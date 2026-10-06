@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Map — model-agnostic, verification-first AI</title>
+<style>
+  :root{
+    --bg:#0A101C; --panel:#121b2c; --panel2:#0e1626; --text:#E7ECF3; --muted:#93a1b8;
+    --line:rgba(255,255,255,.09);
+    --brain:#4f8fd6; --model:#9a86f5; --input:#8595ad; --core:#2bb489; --gate:#ffce54;
+    --agent:#e6b450; --product:#46c07f; --infra:#6b7688; --plug:#43b7d6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1300px 700px at 60% -15%,#15233c 0%,var(--bg) 62%);
+    color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.45;padding:30px 20px 50px}
+  .wrap{max-width:1200px;margin:0 auto}
+  .kicker{color:var(--gate);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  h1{font-size:clamp(26px,4.5vw,42px);margin:8px 0 6px;letter-spacing:-.02em;line-height:1.05}
+  .sub{color:var(--muted);font-size:clamp(13.5px,1.8vw,16px);max-width:760px}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 10px}
+  button{font:inherit;font-weight:600;font-size:13px;border-radius:10px;padding:8px 14px;cursor:pointer;
+    border:1px solid var(--line);background:#182338;color:var(--text);transition:.2s}
+  button:hover{border-color:var(--core)}
+  button.primary{background:#0f6e56;border-color:var(--core)}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-left:auto;font-size:11.5px;color:var(--muted)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .scroll{overflow-x:auto;border-radius:16px}
+  .map{position:relative;width:100%;min-width:1020px;aspect-ratio:1200/800;
+    background:linear-gradient(180deg,#0e1626,#0b1220);border:1px solid var(--line);border-radius:16px}
+  svg{position:absolute;inset:0;width:100%;height:100%}
+  .ed{stroke:rgba(255,255,255,.10);stroke-width:1.4;fill:none;transition:.25s}
+  .ed.flow{stroke:rgba(43,180,137,.4);stroke-dasharray:5 7;animation:dash 1.1s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-24}}
+  .ed.on{stroke:var(--core);stroke-width:2.4;animation:none;stroke-dasharray:none}
+  .ed.dim{stroke:rgba(255,255,255,.04)}
+  .nd{position:absolute;transform:translate(-50%,-50%);width:118px;background:var(--panel);
+    border:1px solid var(--line);border-left:4px solid var(--input);border-radius:10px;padding:8px 9px;
+    cursor:pointer;transition:.2s;text-align:left}
+  .nd:hover{border-color:#cdd6e6}
+  .nd b{display:block;font-size:12px;line-height:1.15}
+  .nd span{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
+  .nd.sel{box-shadow:0 0 0 3px rgba(43,180,137,.4);border-color:var(--core)}
+  .nd.dim{opacity:.32}
+  .nd.hl{box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+  .b-brain{border-left-color:var(--brain)} .b-model{border-left-color:var(--model)}
+  .b-input{border-left-color:var(--input)} .b-core{border-left-color:var(--core)}
+  .b-gate{border-left-color:var(--gate);border-color:rgba(255,206,84,.5)}
+  .b-agent{border-left-color:var(--agent)} .b-product{border-left-color:var(--product)}
+  .b-infra{border-left-color:var(--infra)} .b-plug{border-left-color:var(--plug)}
+  .nd.ghost{opacity:.5;border-style:dashed;border-left-style:dashed}
+  .band{position:absolute;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.6}
+  #info{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;min-height:78px}
+  #info h3{margin:0 0 4px;font-size:15px}
+  #info p{margin:0;font-size:13.5px;color:var(--text)}
+  #info .conn{margin-top:8px;font-size:12px;color:var(--muted)}
+  .foot{margin-top:22px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:14px}
+  .foot p{margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Model-agnostic · governed &amp; human-supervised</div>
+  <h1>One memory. Any AI.</h1>
+  <p class="sub" style="margin-bottom:4px">The truth lives in structure — files, a registry, a deterministic gate — not in any model's head. Swap the model, keep the memory. Any AI that can read a file or call a tool plugs into the same verified truth.</p>
+  <p class="sub" style="font-size:12.5px;opacity:.8">Designed, built, and operated by <b style="color:var(--text)">Vahe Sahakian</b> — running live across four real products (names generalized here).</p>
+
+  <div class="bar">
+    <button class="primary" id="trace">▶ Trace the flow</button>
+    <button id="reset">Reset</button>
+    <div class="legend">
+      <span><i style="background:var(--model)"></i>local model</span>
+      <span><i style="background:var(--core)"></i>memory core</span>
+      <span><i style="background:var(--gate)"></i>gate</span>
+      <span><i style="background:var(--brain)"></i>shared brain</span>
+      <span><i style="background:var(--plug)"></i>plug-in points</span>
+      <span><i style="background:var(--agent)"></i>models</span>
+      <span><i style="background:var(--product)"></i>products</span>
+      <span><i style="background:var(--infra)"></i>infra</span>
+    </div>
+  </div>
+
+  <div class="scroll">
+    <div class="map" id="map">
+      <svg id="edges" viewBox="0 0 1200 800" preserveAspectRatio="none"></svg>
+      <div class="band" style="left:40%;top:2%">shared memory · cross-AI brain</div>
+      <div class="band" style="left:49%;top:21%">plug-in points</div>
+      <div class="band" style="left:65%;top:8.5%">any model, same gate</div>
+      <div class="band" style="left:45%;top:90.5%">infrastructure &amp; channels</div>
+    </div>
+  </div>
+
+  <div id="info">
+    <h3>Click a node to explore</h3>
+    <p>Every fact flows left → right: a local model reads the raw sources, the memory core checks and dates it, the gate lets only current truth through, then any model — owned or third-party — reaches it through a file, a serve API/MCP call, or context injection, and the products serve it. The faint lines are the full web; click to isolate any one piece.</p>
+  </div>
+
+  <div class="foot">
+    Born from a real bug — a stale <b>$12.69</b> balance nearly overwrote the true <b>$30</b>. That one incident is why every fact here is dated, quoted, and gated before any agent or product can state it. Governed, human-supervised, and built to keep tomorrow's answers from reaching back to yesterday's facts.
+    <p>Guarantees are strongest where the loop is owned; third-party AIs get fed verified truth through connectors — a floor raised, not a promise outsourced.</p>
+  </div>
+</div>
+
+<script>
+const N=[
+ // cross-AI brain (top)
+ {id:'now',l:'NOW.md',s:'live state',c:'brain',x:360,y:66,d:'The live state every session reads first — what is done, what is next, corrected the moment it is wrong.'},
+ {id:'convo',l:'CONVO_LOG',s:'evidence log',c:'brain',x:520,y:66,d:'Every action logged with its evidence as it happens, so work is never silently redone.'},
+ {id:'gotchas',l:'GOTCHAS',s:'traps paid for',c:'brain',x:680,y:66,d:'Bugs already paid for, written down so no future session pays for them twice.'},
+ {id:'mailbox',l:'AGENT_MAILBOX',s:'AI↔AI channel',c:'brain',x:840,y:66,d:'A file channel so agents hand work to each other without a human relaying screenshots.'},
+ // inputs + local extractor (left)
+ {id:'ollamaext',l:'Ollama · qwen2.5:3b',s:'local extractor',c:'model',x:90,y:250,d:'A small model running locally — extracts facts from raw text at $0, on your own machine.'},
+ {id:'sites',l:'Live sites & DB',s:'ground truth',c:'input',x:90,y:384,d:'The websites and database a stranger actually sees. Beats any note or memory.'},
+ {id:'logs',l:'Chat & logs',s:'raw history',c:'input',x:90,y:516,d:'Dated transcripts and logs — the raw history the memory reads and grades.'},
+ // memory core
+ {id:'quote',l:'Quote-grounding',s:'G1–G4 checks',c:'core',x:280,y:250,d:'Every extracted fact must carry a verbatim quote from its source, or it is discarded.'},
+ {id:'fresh',l:'Freshness engine',s:'when-true wins',c:'core',x:280,y:384,d:'Tracks when each fact became true, so a stale mention can never overwrite a correction.'},
+ {id:'registry',l:'Registry · 66 golden',s:'answer key',c:'core',x:280,y:516,d:'66 human-frozen golden facts — the answer key the whole system grades itself against.'},
+ // gate
+ {id:'gate',l:'Answer gate',s:'the one door',c:'gate',x:470,y:384,d:'The single door. Only CURRENT, proven facts pass; everything unsure is held for review. The truth lives here — in structure — not in any one model.'},
+ // plug-in points
+ {id:'fileread',l:'File read',s:'markdown brain, any tool',c:'plug',x:650,y:250,d:'Any tool that can open a file can read the markdown brain directly — no API, no SDK, no vendor lock-in.'},
+ {id:'serveapi',l:'Serve API / MCP tool',s:'ask → gated answer + quote',c:'plug',x:650,y:384,d:'A callable endpoint or MCP tool: ask a question, get back a gated answer plus the quote it is grounded in.'},
+ {id:'ctxinject',l:'Context injection',s:'verified facts, last word',c:'plug',x:650,y:516,d:'Verified facts injected into the prompt as the last word before the model answers — it can still misuse them, but it cannot claim it was never told.'},
+ // models — any model, same gate
+ {id:'claude',l:'Claude',s:'orchestrates today',c:'agent',x:880,y:130,d:'Forced through the gate by construction — cannot state an ungated fact. Today’s orchestrator: reads the shared brain, verifies work, decides what ships.'},
+ {id:'chatgpt',l:'ChatGPT',s:'via connector/actions',c:'agent',x:880,y:236,d:'Can be FED gated truth via a thin connector — reads the serve API/files; the gate guarantees what goes IN to it, not what it does with it.'},
+ {id:'gemini',l:'Gemini',s:'via API',c:'agent',x:880,y:342,d:'Can be FED gated truth via a thin connector — reads the serve API/files; the gate guarantees what goes IN to it, not what it does with it.'},
+ {id:'grok',l:'Grok',s:'via API',c:'agent',x:880,y:448,d:'Can be FED gated truth via a thin connector — reads the serve API/files; the gate guarantees what goes IN to it, not what it does with it.'},
+ {id:'ollama2',l:'Local models · Ollama',s:'private, $0',c:'agent',x:880,y:554,d:'Forced through the gate by construction, like any owned piece of this system — cannot state an ungated fact, and nothing it reads ever leaves the machine.'},
+ {id:'ghost',l:'Your next model',s:'plugs in the same way',c:'agent ghost',x:880,y:660,d:'Whatever ships next — plugs in through the same file, API, or context-injection points. The memory does not change; only the model does.'},
+ // products
+ {id:'al',l:'Business One',s:'live directory platform',c:'product',x:1080,y:226,d:'A live community directory platform — thousands of listings, events, jobs, deals, news.'},
+ {id:'otm',l:'Business Two',s:'AI services for SMBs',c:'product',x:1080,y:357,d:'Done-for-you automation and AI services for small businesses — including a live multilingual AI receptionist.'},
+ {id:'pc',l:'Business Three',s:'AI front desk',c:'product',x:1080,y:487,d:'An after-hours AI front desk that catches the calls a busy team misses.'},
+ {id:'inr',l:'Project One',s:'content platform',c:'product',x:1080,y:617,d:'A cultural content platform with an AI assistant.'},
+ // infra (bottom)
+ {id:'vapi',l:'Vapi',s:'voice',c:'infra',x:420,y:738,d:'The voice layer the AI receptionist runs on.'},
+ {id:'tg',l:'Telegram',s:'digests',c:'infra',x:570,y:738,d:'Where daily digests and alerts land.'},
+ {id:'resend',l:'Resend',s:'email',c:'infra',x:720,y:738,d:'Transactional and outreach email — DKIM authenticated at Cloudflare.'},
+ {id:'vercel',l:'Vercel · Supabase',s:'host + data',c:'infra',x:875,y:738,d:'Hosting and the database behind the products.'},
+ {id:'stripe',l:'Stripe',s:'payments',c:'infra',x:1010,y:738,d:'Subscriptions and payments.'},
+ {id:'cf',l:'Cloudflare',s:'DNS / DKIM',c:'infra',x:1130,y:738,d:'DNS and email authentication (DKIM/SPF/DMARC).'},
+];
+const E=[
+ ['sites','quote'],['logs','quote'],['ollamaext','quote'],['ollamaext','fresh'],
+ ['quote','fresh'],['fresh','registry'],['registry','gate'],['fresh','gate'],
+ ['gate','fileread'],['gate','serveapi'],['gate','ctxinject'],
+ ['fileread','claude'],['fileread','ollama2'],['fileread','ghost'],
+ ['serveapi','claude'],['serveapi','chatgpt'],['serveapi','gemini'],['serveapi','grok'],
+ ['ctxinject','claude'],['ctxinject','ollama2'],
+ ['claude','al'],['claude','otm'],['claude','pc'],['claude','inr'],
+ ['chatgpt','al'],['gemini','otm'],
+ ['now','claude'],['convo','claude'],['gotchas','claude'],['mailbox','claude'],['now','fresh'],
+ ['al','vercel'],['al','stripe'],['al','cf'],['al','resend'],['al','tg'],
+ ['otm','vapi'],['pc','vapi'],['otm','tg'],['pc','tg'],['inr','vercel']
+];
+const flowEdges=[['ollamaext','quote'],['quote','fresh'],['fresh','gate'],['gate','serveapi'],['serveapi','chatgpt'],['chatgpt','al']];
+const map=document.getElementById('map'), svg=document.getElementById('edges');
+const info=document.getElementById('info');
+const byId={};N.forEach(n=>byId[n.id]=n);
+const isFlow=(a,b)=>flowEdges.some(f=>(f[0]===a&&f[1]===b)||(f[0]===b&&f[1]===a));
+// draw edges
+E.forEach(([a,b])=>{
+  const A=byId[a],B=byId[b];
+  const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+  ln.setAttribute('x1',A.x);ln.setAttribute('y1',A.y);ln.setAttribute('x2',B.x);ln.setAttribute('y2',B.y);
+  ln.setAttribute('vector-effect','non-scaling-stroke');
+  ln.setAttribute('class','ed'+(isFlow(a,b)?' flow':''));
+  ln.dataset.a=a;ln.dataset.b=b;svg.appendChild(ln);
+});
+// draw nodes
+N.forEach(n=>{
+  const d=document.createElement('div');
+  d.className='nd b-'+n.c.split(' ')[0]+(n.c.indexOf('ghost')>-1?' ghost':'');
+  d.dataset.id=n.id;
+  d.style.left=(n.x/1200*100)+'%';d.style.top=(n.y/800*100)+'%';
+  d.innerHTML='<b>'+n.l+'</b><span>'+n.s+'</span>';
+  d.addEventListener('click',e=>{e.stopPropagation();focus(n.id);});
+  map.appendChild(d);
+});
+const nds=[...document.querySelectorAll('.nd')], eds=[...document.querySelectorAll('.ed')];
+function clearAll(){nds.forEach(n=>n.classList.remove('sel','dim','hl'));eds.forEach(e=>e.classList.remove('on','dim'));}
+function focus(id){
+  clearAll();
+  const nbr=new Set();
+  eds.forEach(e=>{
+    if(e.dataset.a===id||e.dataset.b===id){e.classList.add('on');nbr.add(e.dataset.a);nbr.add(e.dataset.b);}
+    else e.classList.add('dim');
+  });
+  nds.forEach(n=>{
+    const nid=n.dataset.id;
+    if(nid===id)n.classList.add('sel');
+    else if(nbr.has(nid))n.classList.add('hl');
+    else n.classList.add('dim');
+  });
+  const n=byId[id];
+  const links=[...nbr].filter(x=>x!==id).map(x=>byId[x].l);
+  info.innerHTML='<h3>'+n.l+'</h3><p>'+n.d+'</p><div class="conn"><b>Connects to:</b> '+links.join(' · ')+'</div>';
+}
+map.addEventListener('click',()=>{clearAll();info.innerHTML='<h3>Click a node to explore</h3><p>Every fact flows left → right: a local model reads the raw sources, the memory core checks and dates it, the gate lets only current truth through, then any model — owned or third-party — reaches it through a file, a serve API/MCP call, or context injection, and the products serve it.</p>';});
+// trace the flow
+const path=['ollamaext','quote','fresh','gate','serveapi','chatgpt','al'];
+let tracing=false;
+document.getElementById('trace').addEventListener('click',()=>{
+  if(tracing)return;tracing=true;clearAll();
+  nds.forEach(n=>n.classList.add('dim'));
+  let i=0;
+  const step=()=>{
+    if(i>0){const p=byId[path[i-1]];}
+    if(i<path.length){
+      const id=path[i];const nd=nds.find(n=>n.dataset.id===id);
+      nd.classList.remove('dim');nd.classList.add('sel');
+      if(i>0){eds.forEach(e=>{if((e.dataset.a===path[i-1]&&e.dataset.b===id)||(e.dataset.b===path[i-1]&&e.dataset.a===id))e.classList.add('on');});}
+      info.innerHTML='<h3>'+byId[id].l+'</h3><p>'+byId[id].d+'</p>';
+      i++;setTimeout(step,1000);
+    }else{tracing=false;}
+  };step();
+});
+document.getElementById('reset').addEventListener('click',()=>{tracing=false;clearAll();info.innerHTML='<h3>Click a node to explore</h3><p>Every fact flows left → right: a local model reads the raw sources, the memory core checks and dates it, the gate lets only current truth through, then any model — owned or third-party — reaches it through a file, a serve API/MCP call, or context injection, and the products serve it.</p>';});
+</script>
+</body>
+</html>
