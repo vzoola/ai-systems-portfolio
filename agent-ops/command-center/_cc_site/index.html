@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command Center</title>
+<style>
+:root{color-scheme:light;
+--bg:#f4f6fa;--card:#ffffff;--ink:#101626;--muted:#5b6678;--line:#e6e9f0;
+--vahe:#e11d48;--cowork:#2563eb;--code:#7c3aed;--auto:#0d9488;--info:#64748b;
+--red:#e11d48;--amber:#d97706;--green:#16a34a;--blue:#2563eb;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:22px;line-height:1.4}
+.wrap{max-width:1100px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px}
+h1{font-size:24px;letter-spacing:.04em;font-weight:800}
+h1 .dot{color:var(--green)}
+.sub{color:var(--muted);font-size:13px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;min-width:104px;box-shadow:0 1px 2px rgba(16,22,38,.04)}
+.stat .n{font-size:26px;font-weight:800;line-height:1}
+.stat .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+.stat.red .n{color:var(--red)}.stat.amber .n{color:var(--amber)}.stat.blue .n{color:var(--blue)}.stat.green .n{color:var(--green)}
+.section{margin-bottom:22px}
+.section h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--info);border-radius:12px;padding:13px 15px;box-shadow:0 1px 2px rgba(16,22,38,.04)}
+.card.s-vahe{border-left-color:var(--red)}
+.card.s-open{border-left-color:var(--blue)}
+.card.s-watch{border-left-color:var(--amber)}
+.card.s-done{border-left-color:var(--green)}
+.card .lane{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.card .txt{font-size:14px}
+.card .txt b{font-weight:700}
+.chips{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:11px;font-weight:700;color:#fff;padding:2px 8px;border-radius:999px;letter-spacing:.02em}
+.chip.vahe{background:var(--vahe)}.chip.cowork{background:var(--cowork)}.chip.code{background:var(--code)}.chip.auto{background:var(--auto)}.chip.info{background:var(--info)}
+.card.s-done .txt{color:var(--muted)}
+footer{color:var(--muted);font-size:12px;margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1><span class="dot">●</span> COMMAND CENTER</h1>
+      <div class="sub">Single live view — synced from <b>NOW.md</b>. The AI keeps this current.</div>
+    </div>
+    <div class="sub" id="updated"></div>
+  </header>
+  <div class="stats" id="stats"></div>
+  <div id="board"></div>
+  <footer>
+    <div>One source of truth. Open work lives here; finished work rolls into CONVO_LOG; the weekly Sunday audit reconciles drift.</div>
+    <div class="legend">
+      <span><i style="background:var(--vahe)"></i>Vahe (only he can)</span>
+      <span><i style="background:var(--cowork)"></i>Cowork</span>
+      <span><i style="background:var(--code)"></i>Claude Code</span>
+      <span><i style="background:var(--auto)"></i>Auto task</span>
+    </div>
+  </footer>
+</div>
+<script>
+// === DATA: auto-generated from NOW.md by _tools/gen_command_center.py. Do NOT hand-edit; re-run the generator. ===
+const UPDATED = "2026-10-06 · Code (auto)";
+const ITEMS = [
+  {status:"vahe", lane:"General", owner:["vahe"], txt:"<b>Run the production deploy after the chair's</b> — ACCEPT"},
+  {status:"vahe", lane:"General", owner:["vahe"], txt:"<b>Approve the October newsletter send</b>"},
+  {status:"open", lane:"General", owner:["code"], txt:"<b>Family Tree: hide sibling birth-order numbers when</b> — one sibling is hidden (NEW-13)"},
+  {status:"open", lane:"General", owner:["cowork"], txt:"<b>Write the chair's 9th-pass review packet</b>"},
+  {status:"open", lane:"General", owner:["auto"], txt:"<b>Daily site-health sweep across 8 sites (sitemaps,</b> — canonicals, robots)"},
+  {status:"open", lane:"General", owner:["cowork"], txt:"<b>Verify the photo drag-and-drop fix on the</b> — live site after deploy"},
+  {status:"watch", lane:"General", owner:["auto"], txt:"<b>Search Console: 84/92 pages indexed on the</b> — directory site"},
+  {status:"watch", lane:"General", owner:["code"], txt:"<b>Docker Desktop wedged once today — restart</b> — recipe in GOTCHAS"},
+  {status:"done", lane:"General", owner:["code"], txt:"<b>Birth order + privacy copy + account</b> — link + photo pick + colors (11 jobs, 168/168 tests)"},
+  {status:"done", lane:"General", owner:["cowork"], txt:"<b>Removed a stale homepage spotlight pin after</b> — a tier change"},
+];
+
+const GROUPS = [
+  {key:"vahe",  title:"🔴 Needs Vahe — blockers"},
+  {key:"open",  title:"🟡 Open"},
+  {key:"watch", title:"👀 Watch — deadlines & money"},
+  {key:"done",  title:"✅ Recently done"},
+];
+const OWNER_LABEL = {vahe:"VAHE",cowork:"COWORK",code:"CODE",auto:"AUTO",info:"WATCH"};
+
+document.getElementById("updated").textContent = "Updated " + UPDATED;
+
+const counts = {vahe:0,open:0,watch:0,done:0};
+ITEMS.forEach(i=>counts[i.status]++);
+document.getElementById("stats").innerHTML = [
+  ["red","vahe","Need you"],["blue","open","Open"],["amber","watch","Watching"],["green","done","Done"]
+].map(([c,k,l])=>`<div class="stat ${c}"><div class="n">${counts[k]}</div><div class="l">${l}</div></div>`).join("");
+
+const board = document.getElementById("board");
+GROUPS.forEach(g=>{
+  const items = ITEMS.filter(i=>i.status===g.key);
+  if(!items.length) return;
+  const sec = document.createElement("div");
+  sec.className="section";
+  sec.innerHTML = `<h2>${g.title} <span style="color:var(--muted);font-weight:600">(${items.length})</span></h2>`;
+  const grid = document.createElement("div");
+  grid.className="grid";
+  items.forEach(i=>{
+    const chips = i.owner.map(o=>`<span class="chip ${o}">${OWNER_LABEL[o]}</span>`).join("");
+    const el = document.createElement("div");
+    el.className = "card s-"+i.status;
+    el.innerHTML = `<div class="lane">${i.lane}</div><div class="txt">${i.txt}</div><div class="chips">${chips}</div>`;
+    grid.appendChild(el);
+  });
+  sec.appendChild(grid);
+  board.appendChild(sec);
+});
+</script>
+</body>
+</html>
